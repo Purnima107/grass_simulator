@@ -40,3 +40,16 @@ body {
     background-image: url('closed_hand.png'); /* the picture of closed hand */
     transform: translate(-50%, -50%) scale(0.9); /* when clicking, make it smaller */
 }
+
+:root {
+    --text-color: #333333;
+}
+
+.button {
+    color: var(--text-color);
+}
+
+.button:hover {
+    background-color: lightgreen;
+}
+
