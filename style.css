@@ -12,8 +12,10 @@ body {
       margin: 0;
       height: 100vh;
       background: #f0f0f0;
-      /* cursor: none; hide the coursor */
+      cursor: none; /* hide the coursor */
 }
+
+#video { position: relative; z-index: 1; }
 
 /* self-definition cursor*/
 .cursor {
@@ -22,7 +24,7 @@ body {
     left: 0;
     width: 50px;
     height: 50px;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     pointer-events: none; /* don't impact on the hand */
     transform: translate(-50%, -50%) scale(1);
@@ -53,3 +55,56 @@ body {
     background-color: lightgreen;
 }
 
+#timerWrapper {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    text-align: center;
+    color: white;
+    z-index: 100;
+  }
+
+  /* Countdown ring */
+  #timer {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: conic-gradient(#4CAF50 360deg, transparent 0deg);
+    margin: 0 auto;
+  }
+
+  /* Time above label */
+  #timeDisplay {
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+  }
+
+  /* Label under time */
+  #label {
+    margin-top: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+  }
+
+  /* Controls */
+  #controls {
+    margin-top: 6px;
+  }
+  #focusTime,
+  button {
+    margin: 2px;
+    padding: 4px 6px;
+    border-radius: 6px;
+    border: none;
+  }
+  button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #45a049;
+  }

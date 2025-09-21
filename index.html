@@ -28,66 +28,12 @@
         video.addEventListener("click", () => {
             video.pause(); // stop when I click
 
-            // after 1 second, countining
-            setTimeout(() => {
-                video.play();
-            }, 1000);
-        });
-
-        // Play / Pause
-        playPauseBtn.addEventListener("click", () => {
-        if (audio.paused) {
-            audio.play();
-            playPauseBtn.textContent = "Pause";
-        } else {
-            audio.pause();
-            playPauseBtn.textContent = "Play";
-        }
-        });
-
-        // Mute / Unmute
-        muteBtn.addEventListener("click", () => {
-            audio.muted = !audio.muted;
-            muteBtn.textContent = audio.muted ? "Unmute" : "Mute";
-        });
-
-        // Restart
-        restartBtn.addEventListener("click", () => {
-            audio.currentTime = 0;
-            audio.pause();
-            playPauseBtn.textContent = "Play"; // ensure button stays in sync
-        });
-
-        // Reset button text when audio ends
-        audio.addEventListener("ended", () => {
-            playPauseBtn.textContent = "Play";
-        });
-    
-    
-        
-
-
-        const cursor = document.getElementById("cursor");
-
-        // 鼠标移动时，光标跟随
-        document.addEventListener("mousemove", (e) => {
-        cursor.style.left = e.clientX + "px";
-        cursor.style.top = e.clientY + "px";
-        });
-
-        // 点击时变拳头
-        document.addEventListener("mousedown", () => {
-        cursor.classList.remove("open");
-        cursor.classList.add("closed");
-        });
-
-        // 松开时变张开手
-        document.addEventListener("mouseup", () => {
-        cursor.classList.remove("closed");
-        cursor.classList.add("open");
-        });
-        
-    </script>
+        // after 1 second, countining
+        setTimeout(() => {
+            video.play();
+        }, 1000);
+    });
+</script>
 
 </body>
 
