@@ -5,6 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PRACTICE TEST</title>
     <link rel="stylesheet" href="style.css">
+      <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #f0f0f0;
+      cursor: none; /* hide the coursor */
+    }
+
+    /* self-definition cursor*/
+    .cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 50px;
+      height: 50px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      pointer-events: none; /* don't impact on the hand */
+      transform: translate(-50%, -50%) scale(1);
+      transition: transform 0.1s ease, background-image 0.1s ease;
+      z-index: 10000;
+    }
+
+    /* open hand */
+    .open {
+      background-image: url('open-hand.png'); /* the picture of open hand */
+    }
+
+    /* grab */
+    .closed {
+      background-image: url('closed-fist.png'); /* the picture of closed hand */
+      transform: translate(-50%, -50%) scale(0.9); /* when clicking, make it smaller */
+    }
+  </style>
 </head>
 
 <body>
@@ -61,6 +95,31 @@
         audio.addEventListener("ended", () => {
             playPauseBtn.textContent = "Play";
         });
+
+
+          <div class="cursor open" id="cursor"></div>
+
+
+        const cursor = document.getElementById("cursor");
+
+        // 鼠标移动时，光标跟随
+        document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+        });
+
+        // 点击时变拳头
+        document.addEventListener("mousedown", () => {
+        cursor.classList.remove("open");
+        cursor.classList.add("closed");
+        });
+
+        // 松开时变张开手
+        document.addEventListener("mouseup", () => {
+        cursor.classList.remove("closed");
+        cursor.classList.add("open");
+        });
+
     </script>
 
 </body>
