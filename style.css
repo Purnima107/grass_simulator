@@ -42,7 +42,19 @@ body {
     background-image: url('closed_hand.png'); /* the picture of closed hand */
     transform: translate(-50%, -50%) scale(0.9); /* when clicking, make it smaller */
 }
-/* Bottom-right placement */
+
+:root {
+    --text-color: #333333;
+}
+
+.button {
+    color: var(--text-color);
+}
+
+.button:hover {
+    background-color: lightgreen;
+}
+
 #timerWrapper {
     position: absolute;
     bottom: 20px;
@@ -51,7 +63,7 @@ body {
     color: white;
     z-index: 100;
   }
-  
+
   /* Countdown ring */
   #timer {
     width: 100px;
@@ -60,7 +72,7 @@ body {
     background: conic-gradient(#4CAF50 360deg, transparent 0deg);
     margin: 0 auto;
   }
-  
+
   /* Time above label */
   #timeDisplay {
     margin-top: 8px;
@@ -68,7 +80,7 @@ body {
     font-weight: bold;
     color: white;
   }
-  
+
   /* Label under time */
   #label {
     margin-top: 4px;
@@ -76,7 +88,7 @@ body {
     font-weight: bold;
     color: white;
   }
-  
+
   /* Controls */
   #controls {
     margin-top: 6px;
