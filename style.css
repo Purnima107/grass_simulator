@@ -7,21 +7,57 @@
     object-fit: cover;    /* crop instead of squishing */
     z-index: -1;          /* push behind other content */
 }
-#timer {
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 5px solid #4CAF50; /* green border */
-    border-radius: 50%;         /* circle */
-    background-color: rgba(0,0,0,0.2); /* transparent inside */
-    font-size: 16px;
-    font-weight: bold;
+/* Bottom-right placement */
+#timerWrapper {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
     text-align: center;
+    color: white;
+    z-index: 100;
+  }
   
-    position: absolute; /* allows positioning anywhere on screen */
-    top: 20px;          /* 20px from top */
-    left: 20px;         /* 20px from left */
-    z-index: 100;       /* makes sure it stays on top of grass/video */
+  /* Countdown ring */
+  #timer {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: conic-gradient(#4CAF50 360deg, transparent 0deg);
+    margin: 0 auto;
+  }
+  
+  /* Time above label */
+  #timeDisplay {
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  /* Label under time */
+  #label {
+    margin-top: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  /* Controls */
+  #controls {
+    margin-top: 6px;
+  }
+  #focusTime,
+  button {
+    margin: 2px;
+    padding: 4px 6px;
+    border-radius: 6px;
+    border: none;
+  }
+  button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #45a049;
   }
