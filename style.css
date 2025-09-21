@@ -55,6 +55,15 @@ body {
     background-color: lightgreen;
 }
 
+.controls {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 200;
+}
+
+
+
 #timerWrapper {
     position: absolute;
     bottom: 20px;
@@ -90,7 +99,7 @@ body {
   }
 
   /* Controls */
-  #controls {
+  #timerControls {
     margin-top: 6px;
   }
   #focusTime,

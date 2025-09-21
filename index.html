@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRACTICE TEST</title>
+    <title>touch grass ෴⚘₊˚</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -18,6 +18,7 @@
         <button class= "button" id="restartBtn">Restart</button>
     </div>
     <div class="cursor open" id="cursor"></div>
+
     <script>
         const audio = document.getElementById("music");
         const playPauseBtn = document.getElementById("playPauseBtn");
@@ -28,13 +29,150 @@
         video.addEventListener("click", () => {
             video.pause(); // stop when I click
 
-        // after 1 second, countining
-        setTimeout(() => {
-            video.play();
-        }, 1000);
+            // after 1 second, countining
+            setTimeout(() => {
+                video.play();
+            }, 1000);
+        });
+
+        // Play / Pause
+        playPauseBtn.addEventListener("click", () => {
+        if (audio.paused) {
+            audio.play();
+            playPauseBtn.textContent = "Pause";
+        } else {
+            audio.pause();
+            playPauseBtn.textContent = "Play";
+        }
+        });
+
+        // Mute / Unmute
+        muteBtn.addEventListener("click", () => {
+            audio.muted = !audio.muted;
+            muteBtn.textContent = audio.muted ? "Unmute" : "Mute";
+        });
+
+        // Restart
+        restartBtn.addEventListener("click", () => {
+            audio.currentTime = 0;
+            audio.pause();
+            playPauseBtn.textContent = "Play"; // ensure button stays in sync
+        });
+
+        // Reset button text when audio ends
+        audio.addEventListener("ended", () => {
+            playPauseBtn.textContent = "Play";
+        });
+    
+        const cursor = document.getElementById("cursor");
+
+        // 鼠标移动时，光标跟随
+        document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+        });
+
+        // 点击时变拳头
+        document.addEventListener("mousedown", () => {
+        cursor.classList.remove("open");
+        cursor.classList.add("closed");
+        });
+
+        // 松开时变张开手
+        document.addEventListener("mouseup", () => {
+        cursor.classList.remove("closed");
+        cursor.classList.add("open");
+        });
+        
+    </script>
+
+   <!-- Timer Wrapper -->
+    <div id="timerWrapper">
+    <!-- Countdown Ring -->
+    <div id="timer"></div>
+
+    <!-- Time Display -->
+    <p id="timeDisplay">00:00</p>
+
+    <!-- Label -->
+    <p id="label">Focus Timer</p>
+
+    <!-- Controls -->
+    <div id="timerControls">
+      <select id="focusTime">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+      </select>
+      <button onclick="setFocusTime()">Start</button>
+    </div>
+  </div>
+
+  <!-- Timer Logic -->
+  <script>
+    let seconds = 0;
+    let timerInterval;
+    let isActive = false;
+    let focusDuration = 0;
+
+    function setFocusTime() {
+      const minutes = document.getElementById("focusTime").value;
+      focusDuration = minutes * 60;
+      seconds = 0;
+      isActive = true;
+
+      if (timerInterval) clearInterval(timerInterval);
+      updateCircle(1); // reset full ring
+      updateTimeDisplay(focusDuration);
+      startTimer();
+    }
+
+    function startTimer() {
+      timerInterval = setInterval(() => {
+        if (isActive) {
+          seconds++;
+          const remaining = focusDuration - seconds;
+
+          // Update visuals
+          updateCircle((focusDuration - seconds) / focusDuration);
+          updateTimeDisplay(remaining);
+
+          if (seconds >= focusDuration) {
+            isActive = false;
+            clearInterval(timerInterval);
+            alert("🎉 Focus session complete!");
+          }
+        }
+      }, 1000);
+    }
+
+    // Update countdown ring
+    function updateCircle(progress) {
+      const circle = document.getElementById("timer");
+      circle.style.background = `conic-gradient(
+        #4CAF50 ${progress * 360}deg,
+        transparent ${progress * 360}deg
+      )`;
+    }
+
+    // Format mm:ss above the label
+    function updateTimeDisplay(timeLeft) {
+      const minutes = Math.floor(timeLeft / 60);
+      const secs = timeLeft % 60;
+      document.getElementById("timeDisplay").textContent =
+        `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+
+    // Pause/resume if they leave tab
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        isActive = false;
+      } else if (seconds < focusDuration) {
+        isActive = true;
+      }
     });
-</script>
+    
+    </script>
 
 </body>
-
 </html>
