@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <video id="grass_video" autoplay muted loop>
+    <video id="video" autoplay muted loop>
         <source src="demo-resized.mp4" type="video/mp4">
     </video>
     <audio id="music" src="Relaxing_Music_Vol_1.mp3"></audio>
@@ -22,6 +22,16 @@
         const playPauseBtn = document.getElementById("playPauseBtn");
         const muteBtn = document.getElementById("muteBtn");
         const restartBtn = document.getElementById("restartBtn");
+        const video = document.getElementById("video");
+
+        video.addEventListener("click", () => {
+            video.pause(); // stop when I click
+
+            // after 1 second, countining
+            setTimeout(() => {
+                video.play();
+            }, 1000);
+        });
 
         // Play / Pause
         playPauseBtn.addEventListener("click", () => {
@@ -52,6 +62,7 @@
             playPauseBtn.textContent = "Play";
         });
     </script>
+
 </body>
 
 </html>
