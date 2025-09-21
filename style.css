@@ -9,10 +9,10 @@
 }
 
 body {
-      margin: 0;
-      height: 100vh;
-      background: #f0f0f0;
-      /* cursor: none; hide the coursor */
+    margin: 0;
+    height: 100vh;
+    background: #f0f0f0;
+    cursor: none; /* hide the coursor */
 }
 
 /* self-definition cursor*/
@@ -30,12 +30,12 @@ body {
     z-index: 10000;
 }
 
-    /* open hand */
+/* open hand */
 .open {
     background-image: url('open_hands.png'); /* the picture of open hand */
 }
 
-    /* grab */
+/* grab */
 .closed {
     background-image: url('closed_hand.png'); /* the picture of closed hand */
     transform: translate(-50%, -50%) scale(0.9); /* when clicking, make it smaller */

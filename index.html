@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRACTICE TEST</title>
+    <title>touch grass simulator ෴⚘₊˚</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -11,12 +11,14 @@
     <video id="video" autoplay muted loop>
         <source src="demo-resized.mp4" type="video/mp4">
     </video>
+
     <audio id="music" src="Relaxing_Music_Vol_1.mp3"></audio>
     <div class="controls">
         <button id="playPauseBtn">Play</button>
         <button id="muteBtn">Mute</button>
         <button id="restartBtn">Restart</button>
     </div>
+
     <div class="cursor open" id="cursor"></div>
     <script>
         const audio = document.getElementById("music");
@@ -62,10 +64,6 @@
         audio.addEventListener("ended", () => {
             playPauseBtn.textContent = "Play";
         });
-    
-    
-        
-
 
         const cursor = document.getElementById("cursor");
 
@@ -90,5 +88,4 @@
     </script>
 
 </body>
-
 </html>
