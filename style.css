@@ -42,3 +42,57 @@ body {
     background-image: url('closed_hand.png'); /* the picture of closed hand */
     transform: translate(-50%, -50%) scale(0.9); /* when clicking, make it smaller */
 }
+/* Bottom-right placement */
+#timerWrapper {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    text-align: center;
+    color: white;
+    z-index: 100;
+  }
+  
+  /* Countdown ring */
+  #timer {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: conic-gradient(#4CAF50 360deg, transparent 0deg);
+    margin: 0 auto;
+  }
+  
+  /* Time above label */
+  #timeDisplay {
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  /* Label under time */
+  #label {
+    margin-top: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  /* Controls */
+  #controls {
+    margin-top: 6px;
+  }
+  #focusTime,
+  button {
+    margin: 2px;
+    padding: 4px 6px;
+    border-radius: 6px;
+    border: none;
+  }
+  button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #45a049;
+  }
