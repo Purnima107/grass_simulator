@@ -11,6 +11,19 @@
     <video autoplay muted loop id="video">
         <source src="demo-resized.mp4" type="video/mp4">
     </video>
+    <script>
+    const video = document.getElementById("video");
+
+    video.addEventListener("click", () => {
+        video.pause(); // stop when I click
+
+        // after 1 second, countining
+        setTimeout(() => {
+            video.play();
+        }, 1000);
+    });
+</script>
+
 </body>
 
 </html>
