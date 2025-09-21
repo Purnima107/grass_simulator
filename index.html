@@ -23,8 +23,64 @@
             video.play();
         }, 1000);
     });
-</script>
+    </script>
+    <h1>Grass Simulator</h1>
 
+    <!-- Step 1: Choose focus time -->
+    <label for="focusTime">Choose focus time (minutes): </label>
+    <select id="focusTime">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+    </select>
+    <button onclick="setFocusTime()">Start</button>
+  
+    <!-- Timer display -->
+    <p>Focus Time: <span id="timer">0</span> seconds</p>
+  
+    <!-- Step 2: JavaScript logic -->
+    <script>
+      let seconds = 0;
+    let timerInterval;
+    let isActive = false; // only runs after "Start" is clicked
+    let focusDuration = 0; // total focus time in seconds
+  
+    function setFocusTime() {
+      const minutes = document.getElementById("focusTime").value;
+      focusDuration = minutes * 60; // convert minutes → seconds
+      seconds = 0;
+      isActive = true;
+  
+      if (timerInterval) clearInterval(timerInterval); // reset if already running
+      startTimer();
+    }
+  
+    function startTimer() {
+      timerInterval = setInterval(() => {
+        if (isActive) {
+          seconds++;
+          document.getElementById("timer").textContent = seconds;
+  
+          if (seconds >= focusDuration) {
+            isActive = false;
+            clearInterval(timerInterval);
+            alert("🎉 Focus session complete!");
+          }
+        }
+      }, 1000);
+    }
+  
+    // Pause/resume if they leave tab
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        isActive = false;
+        console.log("User left tab ⏸️");
+      } else if (seconds < focusDuration) {
+        isActive = true;
+        console.log("User returned ▶️");
+      }
+    });
+    </script>
 </body>
 
 </html>
