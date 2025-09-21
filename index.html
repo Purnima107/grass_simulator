@@ -3,14 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>touch grass simulator ෴⚘₊˚</title>
+    <title>PRACTICE TEST</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <video autoplay muted loop id="video">
+    <video id="grass_video" autoplay muted loop>
         <source src="demo-resized.mp4" type="video/mp4">
     </video>
+    <audio id="music" src="Relaxing_Music_Vol_1.mp3"></audio>
+    <div class="controls">
+        <button id="playPauseBtn">Play</button>
+        <button id="muteBtn">Mute</button>
+        <button id="restartBtn">Restart</button>
+    </div>
+    <script>
+        const audio = document.getElementById("music");
+        const playPauseBtn = document.getElementById("playPauseBtn");
+        const muteBtn = document.getElementById("muteBtn");
+        const restartBtn = document.getElementById("restartBtn");
+
+        // Play / Pause
+        playPauseBtn.addEventListener("click", () => {
+        if (audio.paused) {
+            audio.play();
+            playPauseBtn.textContent = "Pause";
+        } else {
+            audio.pause();
+            playPauseBtn.textContent = "Play";
+        }
+        });
+
+        // Mute / Unmute
+        muteBtn.addEventListener("click", () => {
+            audio.muted = !audio.muted;
+            muteBtn.textContent = audio.muted ? "Unmute" : "Mute";
+        });
+
+        // Restart
+        restartBtn.addEventListener("click", () => {
+            audio.currentTime = 0;
+            audio.pause();
+            playPauseBtn.textContent = "Play"; // ensure button stays in sync
+        });
+
+        // Reset button text when audio ends
+        audio.addEventListener("ended", () => {
+            playPauseBtn.textContent = "Play";
+        });
+    </script>
 </body>
 
 </html>
